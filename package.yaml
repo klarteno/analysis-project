@@ -1,0 +1,68 @@
+# This YAML file describes your package. Stack will automatically generate a
+# Cabal file when you run `stack build`. See the hpack website for help with
+# this file: <https://github.com/sol/hpack>.
+name: analysis-projects
+version: "0.0.0"
+github: "githubuser/analysis-projects"
+license: MIT
+author: "Author name here"
+maintainer: "Author name here"
+# synopsis: A new Haskeleton package.
+# description: analysis-projects is a new Haskeleton package.
+# category: Other
+
+extra-source-files:
+  - package.yaml
+  - README.md
+  - stack.yaml
+
+ghc-options: -Wall
+
+dependencies:
+  - base
+  - parser-combinators
+  - megaparsec
+  - mtl
+  - text
+  - parsec
+  - container
+  - containers
+  - pretty-simple
+  - transformers
+default-extensions:
+  - OverloadedStrings
+  - QuasiQuotes
+  - GeneralizedNewtypeDeriving
+  - ConstraintKinds
+  - FlexibleContexts
+  - TemplateHaskell
+  - ExistentialQuantification
+
+library:
+  source-dirs: src
+
+executables:
+  analysis-projects-exec:
+    source-dirs: src
+    main: Main
+    dependencies:
+      - analysis-projects
+    ghc-options:
+      - -rtsopts
+      - -threaded
+      - -with-rtsopts=-N
+
+tests:
+  analysis-projects-test-suite:
+    source-dirs: test
+    main: Spec.hs
+    dependencies:
+      - hspec
+      - process
+      - tasty
+      - analysis-projects
+      - QuickCheck
+    ghc-options:
+      - -rtsopts
+      - -threaded
+      - -with-rtsopts=-N
