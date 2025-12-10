@@ -44,8 +44,6 @@ library
       TestAE
       TestAst
       TestRD
-      ToDelPrj.MiniC_lib
-      ToDelPrj.MiniC_lib2
   other-modules:
       Paths_analysis_projects
   hs-source-dirs:
@@ -53,20 +51,19 @@ library
   default-extensions: OverloadedStrings QuasiQuotes GeneralizedNewtypeDeriving ConstraintKinds FlexibleContexts TemplateHaskell ExistentialQuantification
   ghc-options: -Wall
   build-depends:
-      base
-    , container
-    , containers
-    , megaparsec
-    , mtl
-    , parsec
-    , parser-combinators
-    , pretty-simple
-    , text
-    , transformers
+      base >=4.14 && <5
+    , containers >=0.6
+    , megaparsec >=9.0
+    , mtl >=2.2
+    , parsec >=3.1
+    , parser-combinators >=1.3
+    , pretty-simple >=4.0
+    , text >=1.2
+    , transformers >=0.5
   default-language: Haskell2010
 
 executable analysis-projects-exec
-  main-is: Main.hs
+  main-is: main.hs
   other-modules:
       Base
       Data.String.Strip
@@ -87,8 +84,6 @@ executable analysis-projects-exec
       TestAE
       TestAst
       TestRD
-      ToDelPrj.MiniC_lib
-      ToDelPrj.MiniC_lib2
       Paths_analysis_projects
   hs-source-dirs:
       src
@@ -96,16 +91,15 @@ executable analysis-projects-exec
   ghc-options: -Wall -rtsopts -threaded -with-rtsopts=-N -main-is Main
   build-depends:
       analysis-projects
-    , base
-    , container
-    , containers
-    , megaparsec
-    , mtl
-    , parsec
-    , parser-combinators
-    , pretty-simple
-    , text
-    , transformers
+    , base >=4.14 && <5
+    , containers >=0.6
+    , megaparsec >=9.0
+    , mtl >=2.2
+    , parsec >=3.1
+    , parser-combinators >=1.3
+    , pretty-simple >=4.0
+    , text >=1.2
+    , transformers >=0.5
   default-language: Haskell2010
 
 test-suite analysis-projects-test-suite
@@ -121,17 +115,16 @@ test-suite analysis-projects-test-suite
   build-depends:
       QuickCheck
     , analysis-projects
-    , base
-    , container
-    , containers
+    , base >=4.14 && <5
+    , containers >=0.6
     , hspec
-    , megaparsec
-    , mtl
-    , parsec
-    , parser-combinators
-    , pretty-simple
+    , megaparsec >=9.0
+    , mtl >=2.2
+    , parsec >=3.1
+    , parser-combinators >=1.3
+    , pretty-simple >=4.0
     , process
     , tasty
-    , text
-    , transformers
+    , text >=1.2
+    , transformers >=0.5
   default-language: Haskell2010

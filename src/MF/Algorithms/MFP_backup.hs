@@ -1,5 +1,5 @@
 {-# LANGUAGE TupleSections #-}
-module MF.Algorithms.MFP
+module MF.Algorithms.MFP_backup
   ( mfp
   , mfpk
   , mfp'
@@ -103,7 +103,7 @@ mkAnalysis mf l | l `S.member` getE mf = getI' mf
 -- |Applies a transfer function for a nested block.
 --  Note: this function is different from the @applyT@ defined in the MOP module.
 applyT :: MF a -> Label -> a -> a
-applyT mf l = getT mf (select l (getBlocks mf))
+applyT mf l = getT mf (select l (S.map (\(BlockSt s) -> s) (getBlocks mf)))
 
 -- * Contexts
 

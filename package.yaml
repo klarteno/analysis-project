@@ -18,16 +18,15 @@ extra-source-files:
 ghc-options: -Wall
 
 dependencies:
-  - base
-  - parser-combinators
-  - megaparsec
-  - mtl
-  - text
-  - parsec
-  - container
-  - containers
-  - pretty-simple
-  - transformers
+  - base >=4.14 && <5
+  - parser-combinators >=1.3
+  - megaparsec >=9.0
+  - mtl >=2.2
+  - text >=1.2
+  - parsec >=3.1
+  - containers >=0.6
+  - pretty-simple >=4.0
+  - transformers >=0.5
 default-extensions:
   - OverloadedStrings
   - QuasiQuotes
