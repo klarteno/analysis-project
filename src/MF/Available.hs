@@ -3,7 +3,6 @@ module MF.Available where
 import           MiniC_lib
 import           MF.Flowable
 -- import           Base
-import           Data.Monoid                    ( (<>) )
 import qualified Data.Set                      as Set
 import qualified Data.Foldable                 as F
                                                 ( foldMap )

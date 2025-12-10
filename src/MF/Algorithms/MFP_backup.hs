@@ -13,15 +13,10 @@ import           MiniC_lib
 import           MF.Flowable
 import           MF.Analysis
 
-import           Control.Applicative            ( (<$>)
-                                                , (<|>)
-                                                )
 
-import           Data.Maybe                     ( listToMaybe )
 import qualified Data.List                     as L
 import qualified Data.Set                      as S
 
-import           Debug.Trace                    ( trace )
 import           Text.Printf                    ( printf )
 
 -- * Maximal Fixed-Point (MFP) Analysis

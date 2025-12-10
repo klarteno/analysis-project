@@ -1,11 +1,7 @@
 module TestRD where
 
-import           MF.Analysis.RD
 import           MF.Analysis
-import           MF.Labelable
-import           MF.Algorithms.MFP
 import           MiniC_lib
-import           Data.Set                       ( Set )
 
 import           Data.Foldable                  ( forM_ )
 import           Text.Printf                    ( printf )

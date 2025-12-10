@@ -1,14 +1,10 @@
 module TestAE where
 
-import           Base
 import           MF.Analysis
-import           MF.Analysis.AE
-import           MiniC_lib
+import MiniC_lib ( Program, Label )
 
-import           Data.Set                       ( Set )
 
 import           Data.Foldable                  ( forM_ )
-import           Data.Traversable               ( forM )
 import           Text.Printf                    ( printf )
 
 testAnalysis

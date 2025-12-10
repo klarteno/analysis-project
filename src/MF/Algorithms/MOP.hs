@@ -1,15 +1,7 @@
 module MF.Algorithms.MOP where
 
-import           Base
 import           MiniC_lib
 
-import           MF.Flowable
-import           MF.Analysis
-
-import           Data.Maybe                     ( mapMaybe )
-import qualified Data.Set                      as S
-import qualified Data.List                     as L
-                                                ( init )
 
 -- * Meet Over all Paths (MOP) Analysis
 

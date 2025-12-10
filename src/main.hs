@@ -1,6 +1,6 @@
 module Main where
 
-import           Data.Char
+------ import           Data.Char
 
 main :: IO ()
 main = putStrLn "Hello world project: "

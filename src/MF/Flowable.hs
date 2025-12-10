@@ -11,17 +11,7 @@ import           Data.Set                       ( Set
 import qualified Data.Set                      as Set
 import qualified Data.Foldable                 as S
                                                 ( foldMap )
-import qualified Data.Traversable              as S
-                                                ( forM )
-import           Data.Map                       ( Map )
-import qualified Data.Map                      as M
-import           Control.Applicative            ( pure
-                                                , (<$>)
-                                                , (<*>)
-                                                )
 
-import           Data.Maybe                     ( catMaybes )
-import           Data.Monoid
 
 
 
@@ -46,7 +36,6 @@ getVals _           = Nothing
 -- |Returns whether or not a flow is valid.
 isIntra :: Flow -> Bool
 isIntra (Intra _ _) = True
-isIntra _           = False
 
 -- |Uses the declarations in a @Program@  to extract flows
 progFlow, progFlowR :: Program -> Set Flow

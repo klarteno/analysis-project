@@ -1,13 +1,11 @@
 module TestAst where
 
 import           Prelude
-import           Base
 
 import           MF.Labelable
 import           MF.Evaluating
 import           MiniC_lib
 import qualified Data.Map.Strict               as Map
-import           Data.Either
 
 main = putStr "gsdgsdg"
 

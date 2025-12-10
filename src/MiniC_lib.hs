@@ -6,8 +6,6 @@ module MiniC_lib where
 import           Control.Applicative     hiding ( some
                                                 , many
                                                 )
-import           Control.Monad.Identity
-import           Control.Monad
 
 import           Data.Void                      ( Void )
 import           Text.Megaparsec         hiding ( Label
@@ -17,17 +15,10 @@ import           Text.Megaparsec.Char
 import qualified Text.Megaparsec.Char.Lexer    as Lex
 import qualified Control.Monad.Combinators.Expr
                                                as ExprParser
-import           Text.Megaparsec.Error   hiding ( Label )
-import           Text.Megaparsec.Error.Builder
-import           Text.Megaparsec.Internal
-import           Text.Megaparsec.Pos
-import           Text.Megaparsec.Stream
 
-import qualified Data.Text                     as T
 import           Data.List                      ( intercalate )
 
-import           Text.Printf                    ( printf
-                                                , PrintfArg
+import           Text.Printf                    ( PrintfArg
                                                 , formatArg
                                                 , fmtChar
                                                 , fmtPrecision
@@ -208,11 +199,22 @@ parens = between (symbol "(") (symbol ")")
 braces :: Parser a -> Parser a
 braces = between (symbol "{") (symbol "}")
 
+angles :: Parser a -> Parser a
 angles = between (symbol "<") (symbol ">")
+
+brackets :: Parser a -> Parser a
 brackets = between (symbol "[") (symbol "]")
+
+semicolon :: Parser String
 semicolon = symbol ";"
+
+comma :: Parser String
 comma = symbol ","
+
+colon :: Parser String
 colon = symbol ":"
+
+dot :: Parser String
 dot = symbol "."
 
 integer :: Parser Int
@@ -224,7 +226,10 @@ signedInteger = Lex.signed spaceConsumer integer
 pKeyword :: String -> Parser String
 pKeyword keyword = lexeme (string' keyword <* notFollowedBy alphaNumChar)
 
+divOrMod2 :: Parser String
 divOrMod2 = pKeyword "div" <|> pKeyword "mod"
+
+divOrMod :: Parser String
 divOrMod = lexeme (string' "div" Text.Megaparsec.<|> string' "mod")
 
 reserved :: String -> Parser ()
@@ -370,6 +375,7 @@ aOperatorTable =
     ]
   ]
 
+relation :: Parser RBinOp
 relation =
   (symbol ">" >> return Greater)
     <|> (symbol "<" >> return Less)
@@ -550,12 +556,12 @@ skipStmt = Skip (Label Nothing) <$ reserved "skip"
 
 
 instance PrintfArg Label where
-  formatArg x fmt | fmtChar (vFmt 'U' fmt) == 'U' =
+  formatArg _ fmt | fmtChar (vFmt 'U' fmt) == 'U' =
     formatString "Label" (fmt { fmtChar = 's', fmtPrecision = Nothing })
   formatArg _ fmt = errorBadFormat $ fmtChar fmt
 
 instance PrintfArg LiteralExpr where
-  formatArg x fmt | fmtChar (vFmt 'U' fmt) == 'U' =
+  formatArg _ fmt | fmtChar (vFmt 'U' fmt) == 'U' =
     formatString "LiteralExpr" (fmt { fmtChar = 's', fmtPrecision = Nothing })
   formatArg _ fmt = errorBadFormat $ fmtChar fmt
 

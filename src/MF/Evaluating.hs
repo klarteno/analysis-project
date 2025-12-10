@@ -2,23 +2,12 @@ module MF.Evaluating where
 
 import           Base
 import           MiniC_lib
-import           MF.Analysis
 import           MF.UsedNames
-import qualified Data.Set                      as Set
 import qualified Data.Map.Strict               as Map
-import           Data.Monoid                    ( (<>) )
-import           Control.Applicative            ( pure
-                                                , (<$>)
-                                                , (<*>)
-                                                )
-import           Control.Monad.Error            ( throwError )
-import           Data.Either                    ( fromRight )
+import           Control.Monad.Except            ( throwError )
 
 
-import           Control.Monad
-import           Control.Monad.Trans.Maybe
 --import           Control.Monad.Maybe
-import           Control.Monad.State
 
 
 type VTable = Map.Map Name Int

@@ -1,16 +1,11 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 module Base where
 
-import           Text.Printf                    ( printf )
 
-import           Data.Monoid                    ( (<>) )
 --import           Data.Set                       ( Set )
 import qualified Data.Set                      as Set
-import qualified Data.Foldable                 as F
-                                                ( foldMap )
-import           Data.Map                       ( Map )
+                                                
 import qualified Data.Map                      as Map
-import           Data.String
 
 import           MiniC_lib
 

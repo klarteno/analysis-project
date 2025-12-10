@@ -1,9 +1,7 @@
 module MF.FreeNames where
 
-import           Base
 import           MiniC_lib
 
-import           Data.Monoid                    ( (<>) )
 import qualified Data.Set                      as Set
 
 -- * Free Variable Names

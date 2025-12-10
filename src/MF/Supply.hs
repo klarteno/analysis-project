@@ -19,6 +19,12 @@ module MF.Supply
 , supplies
 ) where
 
+
+-- ...existing code...
+import Control.Monad (replicateM)
+-- If you previously needed MonadFix:
+import Control.Monad.Fix (MonadFix)
+-- ...existing code...
 import           Control.Monad.Except
 import           Control.Monad.Identity
 import           Control.Monad.Reader

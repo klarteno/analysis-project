@@ -1,4 +1,4 @@
-{-# LANGUAGE ExistentialQuantification #-}
+----- {-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE StandaloneDeriving #-}
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE PolyKinds #-}
@@ -574,21 +574,32 @@ assignStatement = assignLitVar <|> assignLitArr <|> assignLitRecord
 recordStmt :: Parser Statement
 recordStmt = do
   var <- isVariable
-  symbol ":="
-  symbol "("
+  _ <- symbol ":="
+  _ <- symbol "("
   expr1 <- aOpExpression
-  symbol ","
+  _ <- symbol ","
   expr2 <- aOpExpression
-  symbol ")"
-  return (AssRecord (IdentifierName var) expr1 expr2)
+  _ <- symbol ")"
+  return (AssRecord (Label Nothing) (IdentifierName var) expr1 expr2)
+
 -- parseTest ( spaceConsumer *> recordStmt <* eof) "R:=(1+5,4+7)"
 readStmt :: Parser Statement
 readStmt =
   Read <$> (reserved "read" *> pLitVariable <|> pLitArray <|> pLitRecord)
-readStmt2 = do
-  reserved "read"
-  var <- pLitVariable <|> pLitArray <|> pLitRecord
-  return (Read var)
+
+readStmt2 :: Parser Statement
+readStmt2 = Read (Label Nothing) <$> (reserved "read" *> (pLitVariable <|> pLitArray <|> pLitRecord))
+
+
+instance PrintfArg Label where
+  formatArg _ fmt | fmtChar (vFmt 'U' fmt) == 'U' =
+    formatString "Label" (fmt { fmtChar = 's', fmtPrecision = Nothing })
+  formatArg _ fmt = errorBadFormat $ fmtChar fmt
+
+instance PrintfArg LiteralExpr where
+  formatArg _ fmt | fmtChar (vFmt 'U' fmt) == 'U' =
+    formatString "LiteralExpr" (fmt { fmtChar = 's', fmtPrecision = Nothing })
+  formatArg _ fmt = errorBadFormat $ fmtChar fmt
 
 writeStmt :: Parser Statement
 writeStmt = Write <$> (reserved "write" *> aOpExpression)

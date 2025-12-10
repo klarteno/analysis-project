@@ -1,21 +1,13 @@
 
 module MF.Algorithms.MFP where
 
-import           Base
 import           MiniC_lib
 
-import           MF.Flowable
 import           MF.Analysis
 
-import           Control.Applicative            ( (<$>)
-                                                , (<|>)
-                                                )
 
-import           Data.Maybe                     ( listToMaybe )
 import qualified Data.List                     as List
-import qualified Data.Set                      as Set
 
-import           Debug.Trace                    ( trace )
 import           Text.Printf                    ( printf )
 
 -- * Maximal Fixed-Point (MFP) Analysis

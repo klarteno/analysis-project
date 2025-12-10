@@ -112,6 +112,8 @@ test-suite analysis-projects-test-suite
       test
   default-extensions: OverloadedStrings QuasiQuotes GeneralizedNewtypeDeriving ConstraintKinds FlexibleContexts TemplateHaskell ExistentialQuantification
   ghc-options: -Wall -rtsopts -threaded -with-rtsopts=-N
+  build-tool-depends: hspec-discover:hspec-discover
+
   build-depends:
       QuickCheck
     , analysis-projects
